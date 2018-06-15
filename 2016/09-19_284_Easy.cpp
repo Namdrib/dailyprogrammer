@@ -52,7 +52,7 @@ bool can_be_built_with(const string &word, const string &input)
 // Step 1: load all words whose length >= length, starts with input.front() and ends input.back()
 // Step 2: step through each of these to see if they're possible to be generated using input
 // Since this goes through the dictionary (assume sorted), it should come out sorted
-vector<string> load_possible_words(const string &input, string dictionary = "tests/all_words.txt", const size_t length = 5)
+vector<string> load_possible_words(const string &input, string dictionary = "../misc/enable1.txt", const size_t length = 5)
 {
 	ifstream ifs(dictionary);
 	if (!ifs.is_open())

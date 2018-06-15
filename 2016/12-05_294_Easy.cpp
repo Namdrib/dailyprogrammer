@@ -16,10 +16,7 @@ string getInput(istream &in=cin)
 {
 	string out;
 	getline(in, out);
-	for (size_t i=0; i<out.size(); i++)
-	{
-		out[i] = tolower(out[i]);
-	}
+	transform(out.begin(), out.end(), out.begin(), ::tolower);
 	return out;
 }
 
@@ -39,8 +36,8 @@ int getScore(string in)
 ifstream openWordsFile()
 {
 	// Open the file
-	// string f = "tests/sorted_words.txt";
-	string f = "tests/all_words.txt";
+	// string f = "/sorted_words.txt";
+	string f = "../misc/enable1.txt";
 	ifstream wordsFile(f);
 	if (!wordsFile.is_open())
 	{
@@ -89,12 +86,12 @@ string scrabble(string letters, string query)
 // Bonus 2: Return the longest word in
 // the file that can be made from `letters`
 // NOTE: SORTED THE WORDS BY LENGTH FIRST BY USING
-// cat all_words.txt | awk '{ print length, $0 }' | sort -n -r -s | cut -d" " -f2- > sorted_words.txt
+// cat ../misc/enable1.txt | awk '{ print length, $0 }' | sort -n -r -s | cut -d" " -f2- > sorted_words.txt
 string longest(string letters)
 {
 	// Open the file
-	string f = "tests/sorted_words.txt";
-	// string f = "tests/all_words.txt"; // Also works in reasonable time
+	string f = "/sorted_words.txt";
+	// string f = "../misc/enable1.txt"; // Also works in reasonable time
 	ifstream wordsFile(f);
 	if (!wordsFile.is_open())
 	{
@@ -108,7 +105,7 @@ string longest(string letters)
 	{
 		if (!scrabble(letters, temp).empty())
 		{
-			if (f == "tests/sorted_words.txt")
+			if (f == "sorted_words.txt")
 				return temp;
 			else
 				if (temp.length() > out.length()) out = temp;
