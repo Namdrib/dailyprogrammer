@@ -20,22 +20,17 @@ int hamming_distance(const string &a, const string &b)
 	{
 		throw runtime_error("hamming_distance: length not equal");
 	}
-	int out = 0;
-	for (size_t i=0; i<a.size(); i++)
-	{
-		if (a[i] != b[i])
-		{
-			out++;
-		}
-	}
-	return out;
+
+	// accumulate (using `0, plus<int>()`) the number of different characters between a and b
+	// http://www.cplusplus.com/reference/numeric/inner_product/
+	return inner_product(a.begin(), a.end(), b.begin(), 0, plus<int>(), [](const char left, const char right){return int(left != right);});
 }
 
 int main(int argc, char** argv)
 {
 	int n;
 	cin >> n;
-	auto v(split_by_whitespace_cin<string>());
+	const auto v(split_by_whitespace_cin<string>());
 
 	// store the distances between each entry in v
 	vector<int> distances(n, 0);
