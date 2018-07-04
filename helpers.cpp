@@ -6,6 +6,11 @@
 #include <vector>
 using namespace std;
 
+#ifndef HELPERS_CPP
+#define HELPERS_CPP
+
+#define all(c) begin(c), end(c)
+
 template <typename T>
 ostream& operator << (ostream &os, vector<T> &v)
 {
@@ -53,3 +58,27 @@ ostream& operator << (ostream &os, unordered_map<S, T> m)
 	}
 	return os;
 }
+
+// Read a file whose relative path is given by s into a vector
+// Returns null if failing to open the file.
+template <typename T>
+vector<T> read_file_into_vector(const string &s)
+{
+	// Attempt to open s
+	ifstream ifs(s);
+	if (!ifs.is_open())
+	{
+		cerr << "Could not open file \"" << s << "\"" << endl;
+		return vector<T>{};
+	}
+
+	// read ifs into out and return
+	vector<T> out;
+	for (T temp; getline(ifs, temp); )
+	{
+		out.push_back(temp);
+	}
+	return out;
+}
+
+#endif // HELPERS_CPP
