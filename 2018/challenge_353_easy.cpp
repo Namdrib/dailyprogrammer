@@ -23,7 +23,7 @@ int hamming_distance(const string &a, const string &b)
 
 	// accumulate (using `0, plus<int>()`) the number of different characters between a and b
 	// http://www.cplusplus.com/reference/numeric/inner_product/
-	return inner_product(a.begin(), a.end(), b.begin(), 0, plus<int>(), [](const char left, const char right){return int(left != right);});
+	return inner_product(all(a), b.begin(), 0, plus<int>(), [](const char left, const char right){return int(left != right);});
 }
 
 int main(int argc, char** argv)
@@ -44,5 +44,5 @@ int main(int argc, char** argv)
 		}
 	}
 
-	cout << v[distance(distances.begin(), min_element(distances.begin(), distances.end()))] << endl;
+	cout << *(v.begin() + distance(distances.begin(), min_element(all(distances)))) << endl;
 }
