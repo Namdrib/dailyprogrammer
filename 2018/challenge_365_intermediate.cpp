@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	double COMmission = 0.062; // amount of commission. 1 is 100%, 0 is 0%
+	double COMMISSION = 0.062; // amount of commission. 1 is 100%, 0 is 0%
 
 	// ignore heading
 	string dummy;
@@ -91,7 +91,7 @@ int main(int argc, char** argv)
 			}
 		}
 	}
-	transform(commission.begin(), commission.end(), commission.begin(), [COMmission](double d){return d * COMmission;});
+	transform(commission.begin(), commission.end(), commission.begin(), [COMMISSION](double d){return d * COMMISSION;});
 
 	// perform output
 	cerr << endl;

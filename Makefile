@@ -8,13 +8,12 @@ JAVAFLAGS = -Xlint
 
 %: %.java
 	javac $^ $(JAVAFLAGS)
-	
+
 clean:
-	rm -f a a.exe* a.out
-	
-	
+	rm -rf a *.exe *.class
+
 # Run tests like this:
-# make 12-05_294_Easy && time for item in tests/12-05_Easy_294_{TEST_CASES_HERE}.in ;do ./a [optional args] < $item; done
+# make prog && time for item in tests/prog{TEST_CASES_HERE}.in ;do ./prog [optional args] < $item; done
 
 # Maintaining a single Makefile for cleanliness
 # from the year folder, run like:
