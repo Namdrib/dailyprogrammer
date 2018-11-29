@@ -81,4 +81,10 @@ vector<T> read_file_into_vector(const string &s)
 	return out;
 }
 
+template <typename T>
+T clamp(const T &v, const T &lo, const T &hi)
+{
+	return min(max(v, lo), hi);
+}
+
 #endif // HELPERS_CPP

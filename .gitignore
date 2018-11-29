@@ -33,6 +33,7 @@
 *.exe
 *.out
 *.app
+*.bin
 
 # Java
 # Compiled class file
